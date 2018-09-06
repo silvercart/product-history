@@ -1,0 +1,18 @@
+en:
+    SilverCart\ProductHistory\Extensions\Customer\CustomerExtension:
+        ProductHistory: "Product History"
+        ProductHistories: "Product Histories"
+    SilverCart\ProductHistory\Model\Product\ProductHistory:
+        PLURALNAME: "Product Histories"
+        SINGULARNAME: "Product History"
+        LastView: "Last view"
+        Member: "Customer"
+        NoHistory: "Your history is empty."
+        Product: "Product"
+        RecentlyViewed: "Recently viewed"
+        RecentlyViewedProducts: "Recently viewed products"
+        Remove: "Remove"
+        RemoveFrom: "Remove from history: {title}"
+        ShowAll: "Edit or show history"
+        SuccessfullyRemovedTitle: "Product was removed from history"
+        SuccessfullyRemoved: '<a href="{link}">{title}</a> was removed from history.'

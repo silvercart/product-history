@@ -1,0 +1,18 @@
+---
+Name: silvercart-product-history-extensions
+---
+SilverCart\Model\Pages\MyAccountHolder:
+  extensions:
+    - SilverCart\ProductHistory\Extensions\Pages\MyAccountHolderExtension
+SilverCart\Model\Pages\MyAccountHolderController:
+  extensions:
+    - SilverCart\ProductHistory\Extensions\Pages\MyAccountHolderControllerExtension
+SilverCart\Model\Pages\PageController:
+  extensions:
+    - SilverCart\ProductHistory\Extensions\Pages\PageControllerExtension
+SilverCart\Model\Pages\ProductGroupPageController:
+  extensions:
+    - SilverCart\ProductHistory\Extensions\Pages\ProductGroupPageControllerExtension
+SilverStripe\Security\Member:
+  extensions:
+    - SilverCart\ProductHistory\Extensions\Customer\CustomerExtension

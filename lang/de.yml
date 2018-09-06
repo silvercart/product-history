@@ -1,0 +1,18 @@
+de:
+    SilverCart\ProductHistory\Extensions\Customer\CustomerExtension:
+        ProductHistory: "Artikelverlauf"
+        ProductHistories: "Artikelverläufe"
+    SilverCart\ProductHistory\Model\Product\ProductHistory:
+        PLURALNAME: "Artikelverläufe"
+        SINGULARNAME: "Artikelverlauf"
+        LastView: "Zuletzt angesehen"
+        Member: "Kunde"
+        NoHistory: "In Ihrem Verlauf befinden sich keine Artikel."
+        Product: "Artikel"
+        RecentlyViewed: "Zuletzt angesehen"
+        RecentlyViewedProducts: "Zuletzt angesehene Artikel"
+        Remove: "Entfernen"
+        RemoveFrom: "Aus dem Verlauf entfernen: {title}"
+        ShowAll: "Verlauf anzeigen oder ändern"
+        SuccessfullyRemovedTitle: "Artikel wurde aus dem Verlauf entfernt"
+        SuccessfullyRemoved: '<a href="{link}">{title}</a> wurde aus dem Verlauf entfernt.'
