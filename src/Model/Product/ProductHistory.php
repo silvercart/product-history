@@ -32,7 +32,7 @@ class ProductHistory extends DataObject
      *
      * @var int
      */
-    private static $max_history_amount = 40;
+    private static $max_history_count = 40;
     /**
      * Property to mark a running session merge as in progress.
      *
@@ -114,6 +114,11 @@ class ProductHistory extends DataObject
                 }
                 $new->write();
                 $history->add($new);
+                if ($history->count() > self::config()->get('max_history_count')) {
+                    foreach ($history->limit(100, self::config()->get('max_history_count')) as $itemToRemove) {
+                        $history->remove($itemToRemove);
+                    }
+                }
             }
         } else {
             $history = self::update_session_history($product);
