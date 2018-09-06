@@ -139,12 +139,16 @@ class ProductHistory extends DataObject
      */
     public static function remove_from_history($product, $member = null)
     {
-        $removed         = false;
-        $historyToRemove = self::get_history($member)->filter('ProductID', $product->ID);
-        if ($historyToRemove->exists()) {
+        $removed = false;
+        $history = self::get_history($member);
+        if ($history->exists()) {
             $removed = true;
-            foreach ($historyToRemove as $entry) {
-                $entry->delete();
+            if ($history instanceof ArrayList) {
+                self::to_session($history->exclude('ProductID', $product->ID));
+            } else {
+                foreach ($history->filter('ProductID', $product->ID) as $entry) {
+                    $entry->delete();
+                }
             }
         }
         return $removed;
