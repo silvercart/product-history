@@ -18,6 +18,5 @@
         <button class="btn prev"><span class="fa fa-chevron-left"></span><span class="sr-only"> prev</span></button>
         <button class="btn next"><span class="sr-only">next </span><span class="fa fa-chevron-right"></span></button>
     </div>
-    <script>$(document).ready(function() {silvercart.sly.init($('#widget-sly-product-history'));});</script>
 </section>
 <% end_if %>
