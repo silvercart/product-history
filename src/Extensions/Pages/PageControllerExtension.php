@@ -20,6 +20,13 @@ use SilverStripe\Core\Extension;
 class PageControllerExtension extends Extension
 {
     /**
+     * Determines whether to show the product hostory in footer or not.
+     *
+     * @var bool
+     */
+    private static $show_product_history_in_footer = true;
+    
+    /**
      * Updates the HTML content to render before the footer.
      * 
      * @param string &$content Content to update
@@ -29,7 +36,7 @@ class PageControllerExtension extends Extension
      * @author Sebastian Diel <sdiel@pixeltricks.de>
      * @since 06.09.2018
      */
-    public function updateBeforeFooterContent(&$content)
+    public function updateBeforeFooterContent(&$content) : void
     {
         if ($this->showProductHistoryInFooter()) {
             $content .= $this->owner->renderWith(self::class . '_Footer');
@@ -39,19 +46,19 @@ class PageControllerExtension extends Extension
     /**
      * Returns whether to show the product history in footer or not.
      * 
-     * @return boolean
+     * @return bool
      * 
      * @author Sebastian Diel <sdiel@pixeltricks.de>
      * @since 06.09.2018
      */
-    public function showProductHistoryInFooter()
+    public function showProductHistoryInFooter() : bool
     {
         $showProductHistoryInFooter = true;
-        if ($this->owner->hasMethod('isProductHistoryView')
-         && $this->owner->isProductHistoryView()) {
-            $showProductHistoryInFooter = false;
-        }
-        if ($this->owner instanceof CheckoutStepController) {
+        if (($this->owner->hasMethod('isProductHistoryView')
+          && $this->owner->isProductHistoryView())
+         || $this->owner->config()->show_product_history_in_footer === false
+         || $this->owner instanceof CheckoutStepController
+        ) {
             $showProductHistoryInFooter = false;
         }
         return $showProductHistoryInFooter;
