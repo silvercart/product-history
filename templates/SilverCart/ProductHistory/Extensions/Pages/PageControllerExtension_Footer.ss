@@ -5,13 +5,20 @@
     <div class="sly-container">
         <div id="widget-sly-product-history">
             <ul class="slider">
-        <% loop $ProductHistory %>
+        <% loop $ProductHistory.limit(35) %>
             <% if $Product %>
                 <% with $Product %>
                     <% include SilverCart\View\GroupView\ProductSliderSmallEntry %>
                 <% end_with %>
             <% end_if %>
         <% end_loop %>
+        <% if $ProductHistory.count > 35 %>
+                <li class="slider-item small mr-5">
+                    <div class="card card-product my-1 clearfix text-center w-100 h-100 d-flex border-0 pt-2">
+                        <a href="{$ProductHistoryLink}"><%t SilverCart\ProductHistory\Model\Product\ProductHistory.ShowAll 'Edit or show history' %> <span class="fas fa-angle-double-right"></span></a>
+                    </div>
+                </li>
+        <% end_if %>
             </ul>
         </div>
         <div class="scrollbar"><div class="handle"><div class="mousearea"></div></div></div>
