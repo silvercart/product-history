@@ -4,6 +4,7 @@ namespace SilverCart\ProductHistory\Extensions\Pages;
 
 use SilverCart\Dev\Tools;
 use SilverCart\Model\Pages\CheckoutStepController;
+use SilverCart\Model\Pages\Page;
 use SilverCart\ProductHistory\Model\Product\ProductHistory;
 use SilverStripe\Core\Extension;
 
@@ -90,7 +91,12 @@ class PageControllerExtension extends Extension
      */
     public function ProductHistoryLink()
     {
-        return Tools::PageByIdentifierCode('SilvercartMyAccountHolder')->Link('showproducthistory');
+        $link = '';
+        $page = Tools::PageByIdentifierCode(Page::IDENTIFIER_MY_ACCOUNT_HOLDER);
+        if ($page instanceof Page) {
+            $link = $page->Link('showproducthistory');
+        }
+        return $link;
     }
     
     /**
@@ -105,6 +111,11 @@ class PageControllerExtension extends Extension
      */
     public function RemoveFromHistoryLink($productID)
     {
-        return Tools::PageByIdentifierCode('SilvercartMyAccountHolder')->Link("removefromproducthistory/{$productID}");
+        $link = '';
+        $page = Tools::PageByIdentifierCode(Page::IDENTIFIER_MY_ACCOUNT_HOLDER);
+        if ($page instanceof Page) {
+            $link = $page->Link("removefromproducthistory/{$productID}");
+        }
+        return $link;
     }
 }
