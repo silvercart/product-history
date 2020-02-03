@@ -1,4 +1,5 @@
-<% if $ProductHistory %>
+<% cached $CurrentUser.ID,$ProductHistory.max('LastView'),$ProductHistory.max('ID') %>
+<% if $ProductHistory.exists %>
 <section class="mt-5 mb-0 pt-4 px-4 border-top widget">
     <h3 class="d-inline-block"><%t SilverCart\ProductHistory\Model\Product\ProductHistory.RecentlyViewed 'Recently viewed' %></h3>
     <a href="{$ProductHistoryLink}" class="d-inline-block ml-2"><%t SilverCart\ProductHistory\Model\Product\ProductHistory.ShowAll 'Edit or show history' %></a>
@@ -27,3 +28,4 @@
     </div>
 </section>
 <% end_if %>
+<% end_cached %>
